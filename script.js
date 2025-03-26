@@ -64,7 +64,10 @@ fetch(url)
     });
 
     function afficherDateHeure() {
+
+        // cette fonction permet d'aller chercher la date et l'heure dans la partie current de l'API
         let day = donnees.current.time;
+        // cette partie permet de transposer le format UTC au format français
         let dateFormat = new Date(day);
         let dateFormatLisible = dateFormat.toLocaleDateString("fr-FR");
 
@@ -82,6 +85,8 @@ fetch(url)
     };
 
     function afficherTempsActuel () {
+        // cette fonction récupère le code météo de l'API et le compare dans 
+        // le tableau codes qui  est le recap des valeurs et images liés à ce code 
         let codeActuel = donnees.current.weather_code;
         let temperatureActuel = donnees.current.temperature_2m;
         
@@ -102,18 +107,23 @@ fetch(url)
     };
 
     function afficherJourNuit() {
+        //Cette fonction traite l'info reçu de l'API pour savoir si c'est le jour ou la nuit
         jourNuitContainer.innerHTML = `${donnees.current.is_day === 1 ? `<img src="assets/images/icons/jour.png" alt="jour"/>` : `<img src="assets/images/icons/nuit.png" alt="nuit">`}`;
+        //cette fonction correspond à une fonction if
 
     };
 
     function afficherTemperatureHeure() {
+
+        // Cette fonction récupère les données de prévisions météo heure par heure qui se trouve dans la partie hourly
         let infoHeures = donnees.hourly;
         let heureActuelle = donnees.current.time;
 
         let indexDepart = infoHeures.time.indexOf(heureActuelle);
+        // cette partie permet de créer un index à partie de l'heure se trouvant dans current pour afficher
+        // les heures suivantes cette heure là.
 
         let heureContenu ="";
-        
         
             for (let i = indexDepart + 1; i < infoHeures.time.length; i++) {
 
@@ -140,6 +150,8 @@ fetch(url)
         
     }
 
+
+    //les 2 fonctions suivantes permettent de gérer le scroll de la partie temperature par heure 
     document.querySelector(".prev").addEventListener("click", () => {
         document.getElementById("heuresContainer").scrollBy({
             left: -300, // Décalage vers la gauche
@@ -158,10 +170,12 @@ fetch(url)
 
 
     function afficherTemperatureJour () {
-        let infoJours = donnees.daily;
-        let jourActuel = donnees.current.time;
 
-        //let indexDepart = infoJours.time.indexOf(jourActuel);
+        // Cette fonction récupère les données de prévisions météo sur les prochains jours 
+        // qui se trouvent dans la partie daily du fichier de l'API.
+        // Elle est liée au tableau codes pour récupérer les images
+
+        let infoJours = donnees.daily;
 
         let jourContenu ="";
 
@@ -197,32 +211,43 @@ fetch(url)
         joursContainer.innerHTML = jourContenu;
     }
 
+    //Cette fonction récupère les coordonnées. Il faut les lier à une autre API pour avoir le nom de la ville.
     function afficherCoordonnees() {
         coordonneesContainer.innerHTML = `<div><p>Latitude: ${donnees.latitude}</p></div>
                                         <div><p>Longitude: ${donnees.longitude}</p></div>  `;
     }
 
-
-    //fonction non terminée - a finir
+    //Cette fonction récupère la vitesse et le sens du vent dans la partie current. La donnée trouvée dans la variable 
+    // direction permet de faire tourner l'aiguille de la boussole.
     function afficherVent(){
-        boussoleContainer.innerHTML = ` <div class=img-boussole>
-                                            <img class="fond" src="assets/images/pictures/compass.png" alt="boussole vide">
-                                            <img class="fleche" src="assets/images/pictures/compass-arrow.png" alt="fleche de la boussole">
-                                        </div>
-                                        <p>${donnees.current.wind_speed_10m} km/heure</p>
+        let fleche = document.getElementById("fleche");
+        boussoleContainer.innerHTML = ` <img id="fleche" class="fleche" src="assets/images/pictures/compass-arrow.png" alt="fleche boussole">
+							            <img class="fond" src="assets/images/pictures/compass.png" alt="boussole">
+                                        <p class="vitesse">${donnees.current.wind_speed_10m} km/heure</p>
                                       `;
+        fleche.style.transform = `rotateX(${donnees.current.wind_direction_10m}deg)`;
+
 
     }
 
+    //Cette fonction permet d'afficher l'image background lié au tableau code. 
+    // Avant de la lancer, la fonction vérifie si c'est le jour ou la nuit.
     function ajoutBackground() {
         let codeActuel = donnees.current.weather_code;
-        for(let i = 0; i < codes.length; i++) {
-            if (codeActuel === codes[i].id) {
-                let code = codes[i]
 
-                containerGrid.style.backgroundImage = `url('${code.background}')`;
+        if(donnees.current.is_day === 1) {
+            for(let i = 0; i < codes.length; i++) {
+                if (codeActuel === codes[i].id) {
+                    let code = codes[i]
+    
+                    containerGrid.style.backgroundImage = `url('${code.background}')`;
+                }
+    
             }
 
+        } else {
+            containerGrid.style.backgroundImage = `url("assets/images/pictures/night.jpg")`;
         }
+        
     }
     

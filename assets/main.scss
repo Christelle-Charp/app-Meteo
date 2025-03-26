@@ -21,6 +21,8 @@
 @use "../assets/components/buttons/icons" as *;
 @use "../assets/components/buttons/primary" as *;
 @use "../assets/components/buttons/secondary" as *;
+@use "../assets/components/cards/heure-card" as *;
+@use "../assets/components/cards/jour-card" as *;
 
 // 5️⃣ Import des pages spécifiques
 @use "../assets/pages/about";

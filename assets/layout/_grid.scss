@@ -2,93 +2,12 @@
 @use "../abstracts/colors" as *;
 
 
-/*
-.container {  display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(10, 1fr);
-    gap: 10px 10px;
-    grid-auto-flow: row;
-    grid-template-areas:
-      "date date current-weather current-weather current-weather coordonnees coordonnees"
-      "date date current-weather current-weather current-weather boussole boussole"
-      "date date current-weather current-weather current-weather boussole boussole"
-      "jour-nuit jour-nuit current-weather current-weather current-weather boussole boussole"
-      "jour-nuit jour-nuit current-weather current-weather current-weather boussole boussole"
-      "heure heure heure heure heure heure heure"
-      "heure heure heure heure heure heure heure"
-      "jour jour jour jour jour jour jour"
-      "jour jour jour jour jour jour jour"
-      "jour jour jour jour jour jour jour";
-  }
-  
-  .date { 
-    grid-area: date; 
-    background-color: aqua;
-}
-  
-  .current-weather { 
-    grid-area: current-weather; 
-    background-color: aqua;
-}
-  
-  .Vide1 { 
-    grid-area: Vide1; 
-    background-color: aqua;
-}
-  
-  .boussole { 
-    background-color: aqua;
-    grid-area: boussole; 
-}
-  
-  .vide2 { 
-    background-color: aqua;
-    grid-area: vide2; 
-}
-  
-  .jour-nuit { grid-area: jour-nuit; }
-  
-  .heure { grid-area: heure; }
-  
-  .j-plus1 { 
-    grid-area: j-plus1; 
-    background-color: aqua;
-}
-  
-  .j-plus2 { 
-    grid-area: j-plus2; 
-    background-color: red;
-}
-  
-  .j-plus3 { 
-    grid-area: j-plus3; 
-    background-color: blue;
-}
-  
-  .j-plus4 { 
-    grid-area: j-plus4;
-    background-color: yellow;
- }
-  
-  .j-plus5 { 
-    grid-area: j-plus5;
-    background-color: green;
- }
-  
-  .j-plus6 { 
-    grid-area: j-plus6;
-    background-color: gray;
- }
-  
-  .j-plus7 { 
-    grid-area: j-plus7;
-    background-color: pink;
- }*/
-  
 
+
+  
 
  section {
-    height: 100vh;
+    height: auto;
     
  }
 
@@ -151,13 +70,8 @@
 
  .date {
     grid-area: date; 
-    //grid-column-start: 1;
-    //grid-column-end: span 2;
-    //grid-row-start: 1;
-    //grid-row-end: span 3;
     @include d-flex-column;
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
+    @include background;
 
     p {
         color: $primary-color-text;
@@ -167,13 +81,8 @@
 
  .current-weather {
     grid-area: current-weather;
-    /*grid-column-start: 3;
-    grid-column-end: span 3;
-    grid-row-start: 1;
-    grid-row-end: span 5;*/
     @include d-flex-column;
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
+    @include background;
     color: $primary-color-text;
     height: 100%;
 
@@ -184,12 +93,7 @@
 
  .coordonnees {
     grid-area: coordonnees;
-    /*grid-column-start: 6;
-    grid-column-end: span 2;
-    grid-row-start: 1;
-    grid-row-end: span 1;*/
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
+    @include background;
     @include d-flex-column;
     p{
         font-size: 1.5rem;
@@ -200,47 +104,32 @@
  .boussole {
     grid-area: boussole; 
     @include d-flex-column;
-    /*grid-column-start: 6;
-    grid-column-end: span 2;
-    grid-row-start: 2;
-    grid-row-end: span 4;*/
+    position: relative;
     
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
-    img {
-        width: 100%;
-    }
+    @include background;
 
-
-    .img-boussole {
-        position: relative;
-    }
 
     .fond {
         position: absolute;
-        top: 0;
-        left: 0; /* Pour centrer les boutons verticalement */ 
-        width: 100%;
-        height: 100%;
+        height: 67%;
+        
     }
 
     .fleche {
         position: absolute;
-        top: 50%; /* Pour centrer les boutons verticalement */ 
-        left: 50%;
-        transform: translateY(-50%);
+        height: 60%;
+    }
+
+    .vitesse {
+        position: absolute;
+        bottom: 0;
     }
  }
 
  .jour-nuit {
     grid-area: jour-nuit;
-    /*grid-column-start: 1;
-    grid-column-end: span 2;
-    grid-row-start: 4;
-    grid-row-end: span 2;*/
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
+    @include background;
     color: $primary-color-text;
 
     img {
@@ -249,12 +138,7 @@
  }
 
  .heure {
-    grid-area: heure;
-    /*grid-column-start: 1;
-    grid-column-end: span 7;
-    grid-row-start: 6;
-    grid-row-end: span 2;*/
-    
+    grid-area: heure;    
     overflow: hidden;
     width: 100%;
     height: auto;
@@ -262,8 +146,7 @@
     
     .heurescontainer{
         @include d-flex;
-        background-color: rgba(255, 255, 255, 0.3);
-        border-radius: 10px;
+        @include background;
         height: 100%;
         overflow-x: auto; /* Activer le défilement horizontal */
         scroll-behavior: smooth; /* Pour un défilement fluide */
@@ -271,95 +154,23 @@
         scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.3);
         
 
-        .heure-card{
-            @include d-flex-column;
-            
-            margin: 0.5rem;
-            gap: 10px;
-            background-color: rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-            text-align: center;
-            padding: 1rem;
-            width: 10%;
-
-            .temperature-heure{
-                @include d-flex;
-            }
-            .precipitation-heure{
-                @include d-flex;
-            }
-
-            p{
-                color: $secondary-color-text;
-                font-size: 1rem;
-            }
-
-            .heure-prevision {
-                color: $primary-color-text;
-            }
-
-        }
+        
     }
  }
 
  .jour {
     grid-area: jour;
-    /*grid-column-start: 1;
-    grid-column-end: span 7;
-    grid-row-start: 8;
-    grid-row-end: span 3;*/
     @include d-flex;
     margin: auto;
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
+    @include background;
     @media (max-width: 1080px) {
         flex-wrap: wrap;
         justify-content: center;
         
     }
 
-    .jour-card {
-        @include d-flex-column;
-        gap: 10px;
-        margin: 0.5rem;
-        background-color: rgba(255, 255, 255, 0.3);
-        border-radius: 10px;
-        text-align: center;
-        padding: 1rem;
-        width: 14%;
-        
-        @media (max-width: 1080px) {
-            width: 10%;
-        }
-
-        img {
-            width: 100%;
-            @media (max-width: 1080px) {
-            width: 50%;
-            }
-        }
-
-        .date-jour-card{
-            font-size: 1.5rem;
-            color: $secondary-color-text;
-            @media (max-width: 840px) {
-                font-size: 1rem;
-            }
-        }
-
-        .temp-max{
-            font-size: 2rem;
-            color: $primary-color-text;
-            @media (max-width: 840px) {
-                font-size: 1,5rem;
-            }
-        }
-
-        .temp-min{
-            font-size: 1rem;
-            color: $secondary-color-text;
-        }
+    
 
 
-    }
+    
  }

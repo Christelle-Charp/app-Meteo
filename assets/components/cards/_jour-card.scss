@@ -1,0 +1,44 @@
+@use "../../abstracts/mixins" as *;
+@use "../../abstracts/colors" as *;
+
+.jour-card {
+    @include d-flex-column;
+    gap: 10px;
+    margin: 0.5rem;
+    @include background;
+    text-align: center;
+    padding: 1rem;
+    width: 14%;
+    
+    @media (max-width: 1080px) {
+        width: 10%;
+    }
+
+    img {
+        width: 100%;
+        @media (max-width: 1080px) {
+        width: 50%;
+        }
+    }
+
+    .date-jour-card{
+        font-size: 1.5rem;
+        color: $secondary-color-text;
+        @media (max-width: 840px) {
+            font-size: 1rem;
+        }
+    }
+
+    .temp-max{
+        font-size: 2rem;
+        color: $primary-color-text;
+        @media (max-width: 840px) {
+            font-size: 1,5rem;
+        }
+    }
+
+    .temp-min{
+        font-size: 1rem;
+        color: $secondary-color-text;
+    }
+}
