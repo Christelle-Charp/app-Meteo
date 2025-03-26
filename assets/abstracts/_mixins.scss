@@ -1,0 +1,13 @@
+
+@mixin d-flex-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+@mixin d-flex {
+    display: flex;
+    gap: 10px;
+    
+}

@@ -1,0 +1,356 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+}
+
+h1 {
+  color: #343553;
+  font-size: 4rem;
+}
+@media (max-width: 640px) {
+  h1 {
+    font-size: 3rem;
+  }
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+body {
+  font-family: "Impact";
+}
+
+/*
+.container {  display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    gap: 10px 10px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "date date current-weather current-weather current-weather coordonnees coordonnees"
+      "date date current-weather current-weather current-weather boussole boussole"
+      "date date current-weather current-weather current-weather boussole boussole"
+      "jour-nuit jour-nuit current-weather current-weather current-weather boussole boussole"
+      "jour-nuit jour-nuit current-weather current-weather current-weather boussole boussole"
+      "heure heure heure heure heure heure heure"
+      "heure heure heure heure heure heure heure"
+      "jour jour jour jour jour jour jour"
+      "jour jour jour jour jour jour jour"
+      "jour jour jour jour jour jour jour";
+  }
+
+  .date { 
+    grid-area: date; 
+    background-color: aqua;
+}
+
+  .current-weather { 
+    grid-area: current-weather; 
+    background-color: aqua;
+}
+
+  .Vide1 { 
+    grid-area: Vide1; 
+    background-color: aqua;
+}
+
+  .boussole { 
+    background-color: aqua;
+    grid-area: boussole; 
+}
+
+  .vide2 { 
+    background-color: aqua;
+    grid-area: vide2; 
+}
+
+  .jour-nuit { grid-area: jour-nuit; }
+
+  .heure { grid-area: heure; }
+
+  .j-plus1 { 
+    grid-area: j-plus1; 
+    background-color: aqua;
+}
+
+  .j-plus2 { 
+    grid-area: j-plus2; 
+    background-color: red;
+}
+
+  .j-plus3 { 
+    grid-area: j-plus3; 
+    background-color: blue;
+}
+
+  .j-plus4 { 
+    grid-area: j-plus4;
+    background-color: yellow;
+ }
+
+  .j-plus5 { 
+    grid-area: j-plus5;
+    background-color: green;
+ }
+
+  .j-plus6 { 
+    grid-area: j-plus6;
+    background-color: gray;
+ }
+
+  .j-plus7 { 
+    grid-area: j-plus7;
+    background-color: pink;
+ }*/
+section {
+  height: 100vh;
+}
+
+@media (max-width: 1080px) {
+  .grid {
+    display: grid;
+    height: 100vh;
+    grid-column-gap: 1rem;
+    grid-row-gap: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    grid-template-areas: "date date coordonnees coordonnees" "date date jour-nuit boussole" "current-weather current-weather current-weather current-weather" "current-weather current-weather current-weather current-weather" "heure heure heure heure" "heure heure heure heure" "jour jour jour jour" "jour jour jour jour" "jour jour jour jour" "jour jour jour jour";
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 1rem;
+  }
+}
+@media (min-width: 1081px) {
+  .grid {
+    height: 100vh;
+    display: grid;
+    grid-column-gap: 1rem;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    grid-template-areas: "date date current-weather current-weather current-weather coordonnees coordonnees" "date date current-weather current-weather current-weather boussole boussole" "date date current-weather current-weather current-weather boussole boussole" "jour-nuit jour-nuit current-weather current-weather current-weather boussole boussole" "jour-nuit jour-nuit current-weather current-weather current-weather boussole boussole" "heure heure heure heure heure heure heure" "heure heure heure heure heure heure heure" "jour jour jour jour jour jour jour" "jour jour jour jour jour jour jour" "jour jour jour jour jour jour jour";
+    grid-row-gap: 1rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 1rem;
+  }
+}
+.date {
+  grid-area: date;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+.date p {
+  color: #343553;
+  font-size: 2rem;
+}
+
+.current-weather {
+  grid-area: current-weather;
+  /*grid-column-start: 3;
+  grid-column-end: span 3;
+  grid-row-start: 1;
+  grid-row-end: span 5;*/
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  color: #343553;
+  height: 100%;
+}
+.current-weather img {
+  height: 50%;
+}
+
+.coordonnees {
+  grid-area: coordonnees;
+  /*grid-column-start: 6;
+  grid-column-end: span 2;
+  grid-row-start: 1;
+  grid-row-end: span 1;*/
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.coordonnees p {
+  font-size: 1.5rem;
+  color: #343553;
+}
+
+.boussole {
+  grid-area: boussole;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  /*grid-column-start: 6;
+  grid-column-end: span 2;
+  grid-row-start: 2;
+  grid-row-end: span 4;*/
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+.boussole img {
+  width: 100%;
+}
+.boussole .img-boussole {
+  position: relative;
+}
+.boussole .fond {
+  position: absolute;
+  top: 0;
+  left: 0; /* Pour centrer les boutons verticalement */
+  width: 100%;
+  height: 100%;
+}
+.boussole .fleche {
+  position: absolute;
+  top: 50%; /* Pour centrer les boutons verticalement */
+  left: 50%;
+  transform: translateY(-50%);
+}
+
+.jour-nuit {
+  grid-area: jour-nuit;
+  /*grid-column-start: 1;
+  grid-column-end: span 2;
+  grid-row-start: 4;
+  grid-row-end: span 2;*/
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  color: #343553;
+}
+.jour-nuit img {
+  height: 100%;
+}
+
+.heure {
+  grid-area: heure;
+  /*grid-column-start: 1;
+  grid-column-end: span 7;
+  grid-row-start: 6;
+  grid-row-end: span 2;*/
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+}
+.heure .heurescontainer {
+  display: flex;
+  gap: 10px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  height: 100%;
+  overflow-x: auto; /* Activer le défilement horizontal */
+  scroll-behavior: smooth; /* Pour un défilement fluide */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.3);
+}
+.heure .heurescontainer .heure-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0.5rem;
+  gap: 10px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  text-align: center;
+  padding: 1rem;
+  width: 10%;
+}
+.heure .heurescontainer .heure-card .temperature-heure {
+  display: flex;
+  gap: 10px;
+}
+.heure .heurescontainer .heure-card .precipitation-heure {
+  display: flex;
+  gap: 10px;
+}
+.heure .heurescontainer .heure-card p {
+  color: #000000;
+  font-size: 1rem;
+}
+.heure .heurescontainer .heure-card .heure-prevision {
+  color: #343553;
+}
+
+.jour {
+  grid-area: jour;
+  /*grid-column-start: 1;
+  grid-column-end: span 7;
+  grid-row-start: 8;
+  grid-row-end: span 3;*/
+  display: flex;
+  gap: 10px;
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+@media (max-width: 1080px) {
+  .jour {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+.jour .jour-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+  margin: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  text-align: center;
+  padding: 1rem;
+  width: 14%;
+}
+@media (max-width: 1080px) {
+  .jour .jour-card {
+    width: 10%;
+  }
+}
+.jour .jour-card img {
+  width: 100%;
+}
+@media (max-width: 1080px) {
+  .jour .jour-card img {
+    width: 50%;
+  }
+}
+.jour .jour-card .date-jour-card {
+  font-size: 1.5rem;
+  color: #000000;
+}
+@media (max-width: 840px) {
+  .jour .jour-card .date-jour-card {
+    font-size: 1rem;
+  }
+}
+.jour .jour-card .temp-max {
+  font-size: 2rem;
+  color: #343553;
+}
+@media (max-width: 840px) {
+  .jour .jour-card .temp-max {
+    font-size: 1, 5rem;
+  }
+}
+.jour .jour-card .temp-min {
+  font-size: 1rem;
+  color: #000000;
+}
+
+/*# sourceMappingURL=main.css.map */
