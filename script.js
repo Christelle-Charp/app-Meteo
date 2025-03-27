@@ -217,18 +217,18 @@ fetch(url)
                                         <div><p>Longitude: ${donnees.longitude}</p></div>  `;
     }
 
-    //Cette fonction récupère la vitesse et le sens du vent dans la partie current. La donnée trouvée dans la variable 
+    //La fonctions suivante récupère la vitesse et le sens du vent dans la partie current. La donnée trouvée dans la variable 
     // direction permet de faire tourner l'aiguille de la boussole.
     function afficherVent(){
-        let fleche = document.getElementById("fleche");
+        
         boussoleContainer.innerHTML = ` <img id="fleche" class="fleche" src="assets/images/pictures/compass-arrow.png" alt="fleche boussole">
 							            <img class="fond" src="assets/images/pictures/compass.png" alt="boussole">
                                         <p class="vitesse">${donnees.current.wind_speed_10m} km/heure</p>
                                       `;
-        fleche.style.transform = `rotateX(${donnees.current.wind_direction_10m}deg)`;
-
-
+        let fleche = document.getElementById("fleche");
+        fleche.style.transform = `rotate(${donnees.current.wind_direction_10m}deg)`;
     }
+
 
     //Cette fonction permet d'afficher l'image background lié au tableau code. 
     // Avant de la lancer, la fonction vérifie si c'est le jour ou la nuit.
